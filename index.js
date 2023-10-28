@@ -1,14 +1,10 @@
-const http = require('http')
+const express = require("express");
+const app = express();
 
-const hostname = '127.0.0.1'
-const port = 3000
+const usersRouter = require('./routes/usersRoute');
 
-const server = http.createServer( (req, res ) => {
-    res.statusCode = 200
-    res.setHeader('Content-Type', 'text-plain')
-    res.end('Este es mi primer servidor en node!\n')
-})
+app.use('/users', usersRouter);
 
-server.listen( port, hostname, () => {
-    console.log(`Server runnint at https://${hostname}:${port}/`)
-})
+app.listen(3000, ()=>{
+   console.log("el servidor se inicio")
+});
